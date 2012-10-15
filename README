@@ -1,6 +1,6 @@
 This is a WebVTT C Parser. This is a work in process.
-The code is initially based on rillian's incompleted parser(https://github.com/rillian/webvtt).
-State structure is inspired by WebKit C++ implementation of
-the parser(https://github.com/WebKit/webkit/tree/master/Source/WebCore/html/track).
+The code is based on rillian's parser(https://github.com/rillian/webvtt).
+State structure is inspired by WebKit C++ implementation of the parser
+(https://github.com/WebKit/webkit/tree/master/Source/WebCore/html/track).
 Currently this thing is full of bugs and totally incomplete.
 The least thing it can do right now is parsing the sample.vtt file provided.
