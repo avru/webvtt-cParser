@@ -4,3 +4,6 @@ State structure is inspired by WebKit C++ implementation of the parser
 (https://github.com/WebKit/webkit/tree/master/Source/WebCore/html/track).
 Currently this thing is full of bugs and totally incomplete.
 The least thing it can do right now is parsing the sample.vtt file provided.
+
+Run with:
+<executive name> sample.vtt
