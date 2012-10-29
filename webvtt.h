@@ -28,6 +28,13 @@ extern "C" {
     webvtt_cue *next; /** pointer to the next cue */
     char *cueID;
     char *settings;
+    int pauseOnExit;
+    char *vertical;
+    int snapToLine;
+    long line;
+    long position;
+    long size;
+    char *align;
   };
 
 
@@ -54,16 +61,22 @@ extern "C" {
 
   static inline int isNewline(char c)
   {
-    return c == '\n' || c == '\f' || c == '\r';
+    return c == '\n' || c == '\f' || c == '\r' || c == '\0';
   }
   static inline int isASpace(char c)
   {
     return c == ' ' || c == '\t';
   }
+  static inline int is_a_number(char c)
+  {
+    return c == '0' || c == '1' || c == '2' || c == '3' || c == '4' || c == '5' || c == '6' || c == '7' || c == '8' || c == '9';
+  }
 
-  enum ParseState { Initial, Header, Id, TimingsAndSettings, CueText, BadCue };
-  int getTimingAndSettings(webvtt_parser *ctx, webvtt_cue *cue);
-  char* getLine(webvtt_parser *ctx);
+  enum ParseState { Initial, Header, Id, TimingsAndSettings, CueText, NextCue, BadCue };
+  int get_timing_and_settings(webvtt_parser *ctx, webvtt_cue *cue);
+  double collect_timestamp(webvtt_parser *ctx);
+  void parse_settings(char *settings, webvtt_cue *cue);
+  char* get_line(webvtt_parser *ctx);
 
 #if defined(__cplusplus)
 } /* close extern "C" */
